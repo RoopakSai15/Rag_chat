@@ -1,0 +1,26 @@
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSITENT=TRUE
+      - ANONIMIZED_TELEMETRY=FALSE
+  
+  backend:
+    build: .
+    container_name: rag-backend
+    ports: 
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - chromadb
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  chroma_data:

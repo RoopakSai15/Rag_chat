@@ -1,0 +1,17 @@
+/backend
+  ├─ src/
+  │   ├─ server.js                   ← entry point (Express or Fastify)
+  │   ├─ ingest/
+  │   │   ├─ pdfLoader.js            ← loads & parses uploaded PDF
+  │   │   ├─ chunker.js              ← splits text into chunks
+  │   │   └─ embedAndStore.js        ← calls embedding API + stores vectors
+  │   ├─ query/
+  │   │   ├─ retrieve.js             ← vector store search
+  │   │   └─ answer.js               ← calls OpenAI chat/generation API with context
+  │   ├─ vectorStore/
+  │   │   └─ index.js                ← abstraction for insert/search operations
+  │   ├─ config.js                   ← setup of environment variables, keys, etc
+  │   └─ types.js                    ← shared types/interfaces (e.g., Chunk, DocumentMeta)
+  ├─ uploads/                        ← where uploaded PDF files live (or use temp)
+  ├─ package.json
+  └─ .env                            ← contains OPENAI_API_KEY, etc

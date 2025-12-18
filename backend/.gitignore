@@ -1,0 +1,21 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Docker
+*.log
+docker-data/
+chroma_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads (PDFs)
+backend/uploads/
+
+# Build output (frontend later)
+frontend/dist/
