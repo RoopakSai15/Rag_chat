@@ -49,7 +49,10 @@ app.post("/api/query", async (req, res) => {
     
     const result = await answer(question, context)
 
-    res.json({answer: result})
+    res.json({
+      answer: result,
+      sources: context, 
+    })
   } catch (err) {
     console.error("Question Error", err)
     res.status(500).json({ error: "Query failed!"})

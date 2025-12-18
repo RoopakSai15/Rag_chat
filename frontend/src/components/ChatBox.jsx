@@ -20,7 +20,11 @@ export default function ChatBox({ disabled }) {
 
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", text: res.answer },
+        { 
+          role: "assistant",
+          text: res.answer,
+          sources: res.sources 
+        },
       ]);
     } catch (err) {
       alert(err.message);
@@ -35,7 +39,7 @@ export default function ChatBox({ disabled }) {
 
       <div className="chat">
         {messages.map((m, i) => (
-          <Message key={i} role={m.role} text={m.text} />
+          <Message key={i} role={m.role} text={m.text} sources={m.sources}/>
         ))}
         {loading && <p>Thinking...</p>}
       </div>
