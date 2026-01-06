@@ -5,11 +5,10 @@ if (!process.env.CHROMA_HOST) {
   throw new Error("CHROMA_HOST is not set")
 }
 
-// IMPORTANT: full HTTPS URL
-const chromaUrl = `https://${process.env.CHROMA_HOST}/api/v2`
-
 const client = new ChromaClient({
-  path: chromaUrl,
+  host: process.env.CHROMA_HOST, // chroma-render.onrender.com
+  port: 443,                     // 🔑 THIS IS THE FIX
+  ssl: true,                     // HTTPS
 })
 
 const COLLECTION_NAME = "documents"
