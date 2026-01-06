@@ -1,10 +1,12 @@
 import { ChromaClient } from "chromadb"
 import { v4 as uuidv4} from "uuid"
 
+const isRender = process.env.NODE_ENV === "production"
+
 const client = new ChromaClient({
   host: process.env.CHROMA_HOST || "chromadb",
   port: process.env.CHROMA_PORT || 8000,
-  ssl: true
+  ssl: isRender
 })
 
 const COLLECTION_NAME = "documents"
