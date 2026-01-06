@@ -5,14 +5,14 @@ if (!process.env.CHROMA_HOST) {
   throw new Error("CHROMA_HOST is not set")
 }
 
+// IMPORTANT: full HTTPS URL
+const chromaUrl = `https://${process.env.CHROMA_HOST}`
+
 const client = new ChromaClient({
-  host: process.env.CHROMA_HOST,
-  port: Number(process.env.CHROMA_PORT || 8000),
-  ssl: true,
+  path: chromaUrl,
 })
 
 const COLLECTION_NAME = "documents"
-
 let collection
 
 async function initCollection() {
