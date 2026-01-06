@@ -1,5 +1,5 @@
-import UploadPDF from "components/UploadPDF";
-import ChatBox from "components/ChatBox.jsx";
+import UploadPDF from "./components/UploadPDF";
+import ChatBox from "./components/ChatBox";
 import "./styles.css";
 import { useState } from "react";
 
@@ -11,7 +11,11 @@ export default function App() {
   return (
     <div className="container">
       <h1>📄 RAG Chat</h1>
-      <UploadPDF onIngested={(res) => console.log(res)} />
+      <UploadPDF 
+        onIngested={(res) =>{
+          setChunks(res.chunks)
+          setIngested(true)
+          }} />
         {ingested && (
           <p className="status">
             Document ingested ({chunks} chunks)

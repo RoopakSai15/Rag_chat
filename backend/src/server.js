@@ -14,7 +14,10 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://rag-chat-847j.onrender.com"
+  ],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"]
 }));
@@ -49,7 +52,10 @@ app.post("/api/query", async (req, res) => {
     
     const result = await answer(question, context)
 
-    res.json({answer: result})
+    res.json({
+      answer: result,
+      sources: context, 
+    })
   } catch (err) {
     console.error("Question Error", err)
     res.status(500).json({ error: "Query failed!"})

@@ -37,3 +37,9 @@ body {
   display: flex;
   gap: 0.5rem;
 }
+
+.sources {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
