@@ -6,7 +6,7 @@ if (!process.env.CHROMA_HOST) {
 }
 
 // IMPORTANT: full HTTPS URL
-const chromaUrl = `https://${process.env.CHROMA_HOST}`
+const chromaUrl = `https://${process.env.CHROMA_HOST}/api/v2`
 
 const client = new ChromaClient({
   path: chromaUrl,
