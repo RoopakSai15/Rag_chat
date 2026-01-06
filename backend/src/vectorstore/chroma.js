@@ -1,4 +1,4 @@
-import { CloudClient, Collection } from "chromadb"
+import { CloudClient } from "chromadb"
 import { v4 as uuidv4 } from "uuid"
 
 const client = new CloudClient()
