@@ -4,7 +4,7 @@ import { v4 as uuidv4} from "uuid"
 const client = new ChromaClient({
   host: process.env.CHROMA_HOST || "chromadb",
   port: process.env.CHROMA_PORT || 8000,
-  ssl: false
+  ssl: true
 })
 
 const COLLECTION_NAME = "documents"
