@@ -1,23 +1,25 @@
 import { ChromaClient } from "chromadb"
-import { v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid"
 
-const isRender = process.env.NODE_ENV === "production"
+if (!process.env.CHROMA_HOST) {
+  throw new Error("CHROMA_HOST is not set")
+}
 
 const client = new ChromaClient({
-  host: process.env.CHROMA_HOST || "chromadb",
-  port: process.env.CHROMA_PORT || 8000,
-  ssl: isRender
+  host: process.env.CHROMA_HOST,
+  port: Number(process.env.CHROMA_PORT || 8000),
+  ssl: true,
 })
 
 const COLLECTION_NAME = "documents"
 
-let collection;
+let collection
 
 async function initCollection() {
   if (!collection) {
     collection = await client.getOrCreateCollection({
       name: COLLECTION_NAME,
-      embeddingFunction: null
+      embeddingFunction: null,
     })
   }
   return collection
