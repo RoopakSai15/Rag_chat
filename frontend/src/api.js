@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000"
+const BASE_URL = "https://rag-chat-backend-7cbn.onrender.com"
 
 export async function ingest(file) {
   const formData = new FormData()
