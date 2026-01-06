@@ -1,15 +1,11 @@
-import { ChromaClient } from "chromadb"
+import { CloudClient, Collection } from "chromadb"
 import { v4 as uuidv4 } from "uuid"
+
+const client = new CloudClient()
 
 if (!process.env.CHROMA_HOST) {
   throw new Error("CHROMA_HOST is not set")
 }
-
-const client = new ChromaClient({
-  host: process.env.CHROMA_HOST, // chroma-render.onrender.com
-  port: 443,                     // 🔑 THIS IS THE FIX
-  ssl: true,                     // HTTPS
-})
 
 const COLLECTION_NAME = "documents"
 let collection
